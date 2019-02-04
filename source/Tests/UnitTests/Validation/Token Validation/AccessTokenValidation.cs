@@ -23,8 +23,6 @@ using IdentityServer3.Core.Services;
 using IdentityServer3.Core.Services.InMemory;
 using Moq;
 using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -36,11 +34,6 @@ namespace IdentityServer3.Tests.Validation.Tokens
         const string Category = "Access token validation";
 
         IClientStore _clients = Factory.CreateClientStore();
-
-        static AccessTokenValidation()
-        {
-            JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
-        }
 
         DateTimeOffset now;
         public DateTimeOffset UtcNow

@@ -111,7 +111,7 @@ namespace IdentityServer3.Core.Services.Default
             var header = new JwtHeader(credential);
 
             var x509credential = credential as Microsoft.IdentityModel.Tokens.X509SigningCredentials;
-            if (x509credential != null)
+            if (x509credential != null && !header.ContainsKey("kid"))
             {
                 header.Add("kid", await _keyService.GetKidAsync(x509credential.Certificate));
             }

@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-using IdentityServer3.Core.Extensions;
-using System.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace IdentityServer3.Core.Validation
 {
@@ -29,14 +28,5 @@ namespace IdentityServer3.Core.Validation
     /// </remarks>
     internal class EmbeddedCertificateJwtSecurityTokenHandler : JwtSecurityTokenHandler
     {
-        protected override SecurityKey ResolveIssuerSigningKey(string token, SecurityToken securityToken, SecurityKeyIdentifier keyIdentifier, TokenValidationParameters validationParameters)
-        {
-            var certificate = ((JwtSecurityToken)securityToken).GetCertificateFromToken();
-            if (certificate != null)
-            {
-                keyIdentifier.Add(new X509RawDataKeyIdentifierClause(certificate));
-            }
-            return base.ResolveIssuerSigningKey(token, securityToken, keyIdentifier, validationParameters);
-        }
     }
 }

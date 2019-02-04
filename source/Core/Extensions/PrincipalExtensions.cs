@@ -36,7 +36,7 @@ namespace IdentityServer3.Core.Extensions
         [DebuggerStepThrough]
         public static DateTimeOffset GetAuthenticationTime(this IPrincipal principal)
         {
-            return principal.GetAuthenticationTimeEpoch().ToDateTimeOffsetFromEpoch();
+            return ((int)principal.GetAuthenticationTimeEpoch()).ToDateTimeOffsetFromEpoch();
         }
 
         /// <summary>
