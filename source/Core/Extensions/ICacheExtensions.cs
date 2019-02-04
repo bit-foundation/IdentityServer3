@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 namespace IdentityServer3.Core.Extensions
 {
     /// <summary>
-    /// Extension methods for <see cref="IdentityServer3.Core.Services.ICache{T}"/>
+    /// Extension methods for <see cref="Services.ICache{T}"/>
     /// </summary>
     public static class ICacheExtensions
     {
@@ -37,7 +37,7 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="key">The key.</param>
         /// <param name="get">The get function.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// cache
         /// or
         /// get

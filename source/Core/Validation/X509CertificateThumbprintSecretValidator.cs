@@ -37,7 +37,7 @@ namespace IdentityServer3.Core.Validation
         /// <returns>
         /// A validation result
         /// </returns>
-        /// <exception cref="System.ArgumentException">ParsedSecret.Credential is not an X509 Certificate</exception>
+        /// <exception cref="ArgumentException">ParsedSecret.Credential is not an X509 Certificate</exception>
         public Task<SecretValidationResult> ValidateAsync(IEnumerable<Secret> secrets, ParsedSecret parsedSecret)
         {
             var fail = Task.FromResult(new SecretValidationResult { Success = false });

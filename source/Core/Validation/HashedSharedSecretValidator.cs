@@ -40,7 +40,7 @@ namespace IdentityServer3.Core.Validation
         /// <returns>
         /// A validation result
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">Id or cedential</exception>
+        /// <exception cref="ArgumentNullException">Id or cedential</exception>
         public Task<SecretValidationResult> ValidateAsync(IEnumerable<Secret> secrets, ParsedSecret parsedSecret)
         {
             var fail = Task.FromResult(new SecretValidationResult { Success = false });

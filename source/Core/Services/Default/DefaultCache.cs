@@ -43,7 +43,7 @@ namespace IdentityServer3.Core.Services.Default
         /// Initializes a new instance of the <see cref="DefaultCache{T}"/> class.
         /// </summary>
         /// <param name="duration">The duration to cache items.</param>
-        /// <exception cref="System.ArgumentOutOfRangeException">duration;Duration must be greater than zero</exception>
+        /// <exception cref="ArgumentOutOfRangeException">duration;Duration must be greater than zero</exception>
         public DefaultCache(TimeSpan duration)
         {
             if (duration <= TimeSpan.Zero) throw new ArgumentOutOfRangeException("duration", "Duration must be greater than zero");

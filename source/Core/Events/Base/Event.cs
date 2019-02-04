@@ -31,7 +31,7 @@ namespace IdentityServer3.Core.Events
         /// <param name="type">The type.</param>
         /// <param name="id">The identifier.</param>
         /// <param name="message">The message.</param>
-        /// <exception cref="System.ArgumentNullException">category</exception>
+        /// <exception cref="ArgumentNullException">category</exception>
         public Event(string category, string name, EventTypes type, int id, string message = null)
         {
             if (string.IsNullOrWhiteSpace(category)) throw new ArgumentNullException("category");

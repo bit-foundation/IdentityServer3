@@ -31,7 +31,7 @@ namespace IdentityServer3.Core.Services.Default
         /// Initializes a new instance of the <see cref="FileSystemViewLoader"/> class.
         /// </summary>
         /// <param name="directory">The directory from which to load HTML templates.</param>
-        /// <exception cref="System.ArgumentNullException">directory</exception>
+        /// <exception cref="ArgumentNullException">directory</exception>
         public FileSystemViewLoader(string directory)
         {
             if (String.IsNullOrWhiteSpace(directory)) throw new ArgumentNullException("directory");

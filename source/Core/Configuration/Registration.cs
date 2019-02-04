@@ -90,7 +90,7 @@ namespace IdentityServer3.Core.Configuration
 
         /// <summary>
         /// The type that use for the dependency that implements <see cref="DependencyType"/>. A new instance
-        /// will be created each time is the dependency is resolved. If the type impelments <see cref="System.IDisposable"/>
+        /// will be created each time is the dependency is resolved. If the type impelments <see cref="IDisposable"/>
         /// then <c>Dispose</c> will be called after each request.
         /// </summary>
         /// <value>
@@ -100,9 +100,9 @@ namespace IdentityServer3.Core.Configuration
 
         /// <summary>
         /// A factory function to obtain the dependency. The function will be invoked each time the dependency is 
-        /// resolved. If the returned object impelments <see cref="System.IDisposable"/>
+        /// resolved. If the returned object impelments <see cref="IDisposable"/>
         /// then <c>Dispose</c> will be called after each request.
-        /// The <see cref="IdentityServer3.Core.Services.IDependencyResolver"/> parameter can be 
+        /// The <see cref="IDependencyResolver"/> parameter can be 
         /// used to resolve other dependencies.
         /// </summary>
         /// <value>
@@ -154,7 +154,7 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="type">The type.</param>
         /// <param name="name">The name.</param>
-        /// <exception cref="System.ArgumentNullException">type</exception>
+        /// <exception cref="ArgumentNullException">type</exception>
         public Registration(Type type, string name = null)
         {
             if (type == null) throw new ArgumentNullException("type");
@@ -168,7 +168,7 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="factory">The factory.</param>
         /// <param name="name">The name.</param>
-        /// <exception cref="System.ArgumentNullException">factory</exception>
+        /// <exception cref="ArgumentNullException">factory</exception>
         public Registration(Func<IDependencyResolver, T> factory, string name = null)
         {
             if (factory == null) throw new ArgumentNullException("factory");
@@ -182,7 +182,7 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="singleton">The singleton instance.</param>
         /// <param name="name">The name.</param>
-        /// <exception cref="System.ArgumentNullException">instance</exception>
+        /// <exception cref="ArgumentNullException">instance</exception>
         public Registration(T singleton, string name = null)
         {
             if (singleton == null) throw new ArgumentNullException("instance");
@@ -197,7 +197,7 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="registration">The registration.</param>
         /// <param name="name">The name.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// registration
         /// or
         /// name

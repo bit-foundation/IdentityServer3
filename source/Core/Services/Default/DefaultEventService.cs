@@ -35,7 +35,7 @@ namespace IdentityServer3.Core.Services.Default
         /// Raises the specified event.
         /// </summary>
         /// <param name="evt">The event.</param>
-        /// <exception cref="System.ArgumentNullException">evt</exception>
+        /// <exception cref="ArgumentNullException">evt</exception>
         public virtual Task RaiseAsync<T>(Event<T> evt)
         {
             if (evt == null) throw new ArgumentNullException("evt");

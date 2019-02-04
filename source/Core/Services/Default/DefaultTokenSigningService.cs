@@ -16,7 +16,8 @@
 
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Models;
-using System.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 
 namespace IdentityServer3.Core.Services.Default
@@ -73,7 +74,7 @@ namespace IdentityServer3.Core.Services.Default
         /// Retrieves the signing credential (override to load key from alternative locations)
         /// </summary>
         /// <returns>The signing credential</returns>
-        protected virtual async Task<SigningCredentials> GetSigningCredentialsAsync()
+        protected virtual async Task<Microsoft.IdentityModel.Tokens.SigningCredentials> GetSigningCredentialsAsync()
         {
             return new X509SigningCredentials(await _keyService.GetSigningKeyAsync());
         }
@@ -84,7 +85,7 @@ namespace IdentityServer3.Core.Services.Default
         /// <param name="token">The token.</param>
         /// <param name="credentials">The credentials.</param>
         /// <returns>The signed JWT</returns>
-        protected virtual async Task<string> CreateJsonWebToken(Token token, SigningCredentials credentials)
+        protected virtual async Task<string> CreateJsonWebToken(Token token, Microsoft.IdentityModel.Tokens.SigningCredentials credentials)
         {
             var payload = CreatePayload(token);
             return await SignAsync(payload, credentials);
@@ -105,11 +106,11 @@ namespace IdentityServer3.Core.Services.Default
         /// </summary>
         /// <param name="credential">The credentials.</param>
         /// <returns>The JWT header</returns>
-        private async Task<JwtHeader> CreateHeaderAsync(SigningCredentials credential)
+        private async Task<JwtHeader> CreateHeaderAsync(Microsoft.IdentityModel.Tokens.SigningCredentials credential)
         {
             var header = new JwtHeader(credential);
 
-            var x509credential = credential as X509SigningCredentials;
+            var x509credential = credential as Microsoft.IdentityModel.Tokens.X509SigningCredentials;
             if (x509credential != null)
             {
                 header.Add("kid", await _keyService.GetKidAsync(x509credential.Certificate));
@@ -118,7 +119,7 @@ namespace IdentityServer3.Core.Services.Default
             return header;
         }
 
-        private async Task<string> SignAsync(string payload, SigningCredentials credentials)
+        private async Task<string> SignAsync(string payload, Microsoft.IdentityModel.Tokens.SigningCredentials credentials)
         {
             var header = await CreateHeaderAsync(credentials);
             var jwtPayload = JwtPayload.Deserialize(payload);

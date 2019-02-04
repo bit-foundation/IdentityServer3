@@ -24,7 +24,7 @@ namespace IdentityServer3.Core.Models
 {
     /// <summary>
     /// AuthenticateResult models the result from the various authentication methods 
-    /// on the <see cref="IdentityServer3.Core.Services.IUserService"/>
+    /// on the <see cref="Services.IUserService"/>
     /// </summary>
     public class AuthenticateResult
     {
@@ -56,7 +56,7 @@ namespace IdentityServer3.Core.Models
         /// Initializes a new instance of the <see cref="AuthenticateResult"/> class.
         /// </summary>
         /// <param name="errorMessage">The error message.</param>
-        /// <exception cref="System.ArgumentNullException">errorMessage</exception>
+        /// <exception cref="ArgumentNullException">errorMessage</exception>
         public AuthenticateResult(string errorMessage)
         {
             if (errorMessage.IsMissing()) throw new ArgumentNullException("errorMessage");
@@ -145,8 +145,8 @@ namespace IdentityServer3.Core.Models
         /// <param name="authenticationMethod">The authentication method. This should be used when
         /// local authentication is performed as some other means other than password has been
         /// used to authenticate the user (e.g. '2fa' for two-factor, or 'certificate' for client</param>
-        /// <exception cref="System.ArgumentNullException">redirectPath</exception>
-        /// <exception cref="System.ArgumentException">redirectPath must start with / or ~/</exception>
+        /// <exception cref="ArgumentNullException">redirectPath</exception>
+        /// <exception cref="ArgumentException">redirectPath must start with / or ~/</exception>
         public AuthenticateResult(string redirectPath, string subject, string name, 
             IEnumerable<Claim> claims = null,
             string identityProvider = Constants.BuiltInIdentityProvider,
@@ -175,12 +175,12 @@ namespace IdentityServer3.Core.Models
         /// <param name="externalId">The external identifier that represents the external identity
         /// provider the partial login is created from. This will be re-presented to correlate the request
         /// when the user resumes from the redirect.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// redirectPath
         /// or
         /// externalId
         /// </exception>
-        /// <exception cref="System.ArgumentException">redirectPath must start with / or ~/</exception>
+        /// <exception cref="ArgumentException">redirectPath must start with / or ~/</exception>
         public AuthenticateResult(string redirectPath, ExternalIdentity externalId)
         {
             if (redirectPath.IsMissing()) throw new ArgumentNullException("redirectPath");
@@ -208,8 +208,8 @@ namespace IdentityServer3.Core.Models
         /// current web server. The <c>"~/"</c> prefix is supported to allow application-relative
         /// paths to be used (e.g. "~/path").</param>
         /// <param name="claims">Additional claims that will be maintained in the principal.</param>
-        /// <exception cref="System.ArgumentNullException">redirectPath</exception>
-        /// <exception cref="System.ArgumentException">redirectPath must start with / or ~/</exception>
+        /// <exception cref="ArgumentNullException">redirectPath</exception>
+        /// <exception cref="ArgumentException">redirectPath must start with / or ~/</exception>
         public AuthenticateResult(string redirectPath, IEnumerable<Claim> claims)
         {
             if (redirectPath.IsMissing()) throw new ArgumentNullException("redirectPath");

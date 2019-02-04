@@ -40,7 +40,7 @@ namespace IdentityServer3.Core.Validation
         /// <returns>
         /// A validation result
         /// </returns>
-        /// <exception cref="System.ArgumentException">id or credential is missing.</exception>
+        /// <exception cref="ArgumentException">id or credential is missing.</exception>
         public Task<SecretValidationResult> ValidateAsync(IEnumerable<Secret> secrets, ParsedSecret parsedSecret)
         {
             var fail = Task.FromResult(new SecretValidationResult { Success = false });

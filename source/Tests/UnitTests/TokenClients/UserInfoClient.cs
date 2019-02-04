@@ -1,15 +1,15 @@
 ﻿using FluentAssertions;
 using IdentityModel.Client;
 using Microsoft.Owin.Builder;
-using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace IdentityServer3.Tests.TokenClients
-{ 
+{
     public class UserInfoEndpointClient
     {
         const string TokenEndpoint = "https://server/connect/token";
@@ -38,40 +38,38 @@ namespace IdentityServer3.Tests.TokenClients
             response.IsError.Should().BeFalse();
 
             var userInfoclient = new UserInfoClient(
-                new Uri(UserInfoEndpoint),
-                response.AccessToken,
+                UserInfoEndpoint,
                 _handler);
 
-            var userInfo = await userInfoclient.GetAsync();
+            var userInfo = await userInfoclient.GetAsync(response.AccessToken);
 
             userInfo.IsError.Should().BeFalse();
             userInfo.Claims.Count().Should().Be(3);
-            userInfo.Claims.Should().Contain(Tuple.Create("sub", "88421113"));
-            userInfo.Claims.Should().Contain(Tuple.Create("email", "BobSmith@email.com"));
-            userInfo.Claims.Should().Contain(Tuple.Create("email_verified", "True"));
+            userInfo.Claims.Should().Contain(new Claim("sub", "88421113"));
+            userInfo.Claims.Should().Contain(new Claim("email", "BobSmith@email.com"));
+            userInfo.Claims.Should().Contain(new Claim("email_verified", "True"));
         }
 
         [Fact]
         public async Task Address_Scope()
         {
-            var tokenClient = new TokenClient(
+                var tokenClient = new TokenClient(
                 TokenEndpoint,
                 "roclient",
                 "secret",
                 innerHttpMessageHandler: _handler);
 
-            var response = await tokenClient.RequestResourceOwnerPasswordAsync("bob", "bob", "openid address");
-            response.IsError.Should().BeFalse();
+                var response = await tokenClient.RequestResourceOwnerPasswordAsync("bob", "bob", "openid address");
+                response.IsError.Should().BeFalse();
 
-            var userInfoclient = new UserInfoClient(
-                new Uri(UserInfoEndpoint),
-                response.AccessToken,
-                _handler);
+                var userInfoclient = new UserInfoClient(
+                    UserInfoEndpoint,
+                    _handler);
 
-            var userInfo = await userInfoclient.GetAsync();
+                var userInfo = await userInfoclient.GetAsync(response.AccessToken);
 
-            userInfo.IsError.Should().BeFalse();
-            userInfo.Raw.Should().Be("{\"sub\":\"88421113\",\"address\":{\"street_address\":\"One Hacker Way\",\"locality\":\"Heidelberg\",\"postal_code\":69118,\"country\":\"Germany\"}}");
+                userInfo.IsError.Should().BeFalse();
+                userInfo.Raw.Should().Be("{\"sub\":\"88421113\",\"address\":{\"street_address\":\"One Hacker Way\",\"locality\":\"Heidelberg\",\"postal_code\":69118,\"country\":\"Germany\"}}");
         }
 
         [Fact]
@@ -87,14 +85,13 @@ namespace IdentityServer3.Tests.TokenClients
             response.IsError.Should().BeFalse();
 
             var userInfoclient = new UserInfoClient(
-                new Uri(UserInfoEndpoint),
-                response.AccessToken,
+                UserInfoEndpoint,
                 _handler);
 
-            var userInfo = await userInfoclient.GetAsync();
+            var userInfo = await userInfoclient.GetAsync(response.AccessToken);
 
             userInfo.IsError.Should().BeTrue();
-            userInfo.HttpErrorStatusCode.Should().Be(HttpStatusCode.Forbidden);
+            userInfo.HttpStatusCode.Should().Be(HttpStatusCode.Forbidden);
         }
 
         [Fact]
@@ -110,14 +107,13 @@ namespace IdentityServer3.Tests.TokenClients
             response.IsError.Should().BeFalse();
 
             var userInfoclient = new UserInfoClient(
-                new Uri(UserInfoEndpoint),
-                response.AccessToken,
+                UserInfoEndpoint,
                 _handler);
 
-            var userInfo = await userInfoclient.GetAsync();
+            var userInfo = await userInfoclient.GetAsync(response.AccessToken);
 
             userInfo.IsError.Should().BeTrue();
-            userInfo.HttpErrorStatusCode.Should().Be(HttpStatusCode.Forbidden);
+            userInfo.HttpStatusCode.Should().Be(HttpStatusCode.Forbidden);
         }
     }
 }

@@ -20,7 +20,7 @@ using System;
 namespace IdentityServer3.Core.Extensions
 {
     /// <summary>
-    /// Extension methods for <see cref="IdentityServer3.Core.Services.ILocalizationService"/>
+    /// Extension methods for <see cref="ILocalizationService"/>
     /// </summary>
     public static class ILocalizationServiceExtensions
     {
@@ -30,7 +30,7 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="localization">The localization.</param>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">localization</exception>
+        /// <exception cref="ArgumentNullException">localization</exception>
         public static string GetMessage(this ILocalizationService localization, string id)
         {
             if (localization == null) throw new ArgumentNullException("localization");
@@ -44,7 +44,7 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="localization">The localization.</param>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">localization</exception>
+        /// <exception cref="ArgumentNullException">localization</exception>
         public static string GetEvent(this ILocalizationService localization, string id)
         {
             if (localization == null) throw new ArgumentNullException("localization");
@@ -58,7 +58,7 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="localization">The localization.</param>
         /// <param name="scope">The scope.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">localization</exception>
+        /// <exception cref="ArgumentNullException">localization</exception>
         public static string GetScopeDisplayName(this ILocalizationService localization, string scope)
         {
             if (localization == null) throw new ArgumentNullException("localization");
@@ -72,7 +72,7 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="localization">The localization.</param>
         /// <param name="scope">The scope.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">localization</exception>
+        /// <exception cref="ArgumentNullException">localization</exception>
         public static string GetScopeDescription(this ILocalizationService localization, string scope)
         {
             if (localization == null) throw new ArgumentNullException("localization");

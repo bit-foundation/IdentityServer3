@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Owin.Builder;
 using IdentityModel.Client;
@@ -50,8 +48,8 @@ namespace IdentityServer3.Tests.TokenClients
                 Token = tokenResponse.AccessToken
             });
 
-            var exp1 = Int32.Parse(introspectionResponse1.Claims.Single(x => x.Item1 == "exp").Item2);
-            var exp2 = Int32.Parse(introspectionResponse2.Claims.Single(x => x.Item1 == "exp").Item2);
+            var exp1 = Int32.Parse(introspectionResponse1.Claims.Single(x => x.Type == "exp").Value);
+            var exp2 = Int32.Parse(introspectionResponse2.Claims.Single(x => x.Type == "exp").Value);
 
             exp1.Should().Be(exp2);
         }
@@ -67,7 +65,7 @@ namespace IdentityServer3.Tests.TokenClients
             {
                 Token = tokenResponse.AccessToken
             });
-            var exp1 = Int32.Parse(introspectionResponse1.Claims.Single(x => x.Item1 == "exp").Item2);
+            var exp1 = Int32.Parse(introspectionResponse1.Claims.Single(x => x.Type == "exp").Value);
 
             await Task.Delay(1000);
 
@@ -77,7 +75,7 @@ namespace IdentityServer3.Tests.TokenClients
                 Token = refreshResponse.AccessToken
             });
 
-            var exp2 = Int32.Parse(introspectionResponse2.Claims.Single(x => x.Item1 == "exp").Item2);
+            var exp2 = Int32.Parse(introspectionResponse2.Claims.Single(x => x.Type == "exp").Value);
 
             exp1.Should().BeLessThan(exp2);
         }
@@ -93,7 +91,7 @@ namespace IdentityServer3.Tests.TokenClients
             {
                 Token = tokenResponse.AccessToken
             });
-            var exp1 = Int32.Parse(introspectionResponse1.Claims.Single(x => x.Item1 == "exp").Item2);
+            var exp1 = Int32.Parse(introspectionResponse1.Claims.Single(x => x.Type == "exp").Value);
 
             await Task.Delay(1000);
 
@@ -103,7 +101,7 @@ namespace IdentityServer3.Tests.TokenClients
                 Token = tokenResponse.AccessToken
             });
 
-            var exp2 = Int32.Parse(introspectionResponse2.Claims.Single(x => x.Item1 == "exp").Item2);
+            var exp2 = Int32.Parse(introspectionResponse2.Claims.Single(x => x.Type == "exp").Value);
 
             exp1.Should().Be(exp2);
         }

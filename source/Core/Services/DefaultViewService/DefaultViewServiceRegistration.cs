@@ -62,7 +62,7 @@ namespace IdentityServer3.Core.Services.Default
         /// Initializes a new instance of the <see cref="DefaultViewServiceRegistration"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        /// <exception cref="System.ArgumentNullException">options</exception>
+        /// <exception cref="ArgumentNullException">options</exception>
         public DefaultViewServiceRegistration(DefaultViewServiceOptions options)
         {
             if (options == null) throw new ArgumentNullException("options");

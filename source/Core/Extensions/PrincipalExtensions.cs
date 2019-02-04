@@ -24,7 +24,7 @@ using System.Security.Principal;
 namespace IdentityServer3.Core.Extensions
 {
     /// <summary>
-    /// Extension methods for <see cref="System.Security.Principal.IPrincipal"/> and <see cref="System.Security.Principal.IIdentity"/> .
+    /// Extension methods for <see cref="IPrincipal"/> and <see cref="IIdentity"/> .
     /// </summary>
     public static class PrincipalExtensions
     {
@@ -82,7 +82,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="identity">The identity.</param>
         /// <returns></returns>
-        /// <exception cref="System.InvalidOperationException">sub claim is missing</exception>
+        /// <exception cref="InvalidOperationException">sub claim is missing</exception>
         [DebuggerStepThrough]
         public static string GetSubjectId(this IIdentity identity)
         {
@@ -109,7 +109,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="identity">The identity.</param>
         /// <returns></returns>
-        /// <exception cref="System.InvalidOperationException">name claim is missing</exception>
+        /// <exception cref="InvalidOperationException">name claim is missing</exception>
         [DebuggerStepThrough]
         public static string GetName(this IIdentity identity)
         {
@@ -147,7 +147,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="identity">The identity.</param>
         /// <returns></returns>
-        /// <exception cref="System.InvalidOperationException">amr claim is missing</exception>
+        /// <exception cref="InvalidOperationException">amr claim is missing</exception>
         [DebuggerStepThrough]
         public static string GetAuthenticationMethod(this IIdentity identity)
         {
@@ -186,7 +186,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="identity">The identity.</param>
         /// <returns></returns>
-        /// <exception cref="System.InvalidOperationException">idp claim is missing</exception>
+        /// <exception cref="InvalidOperationException">idp claim is missing</exception>
         [DebuggerStepThrough]
         public static string GetIdentityProvider(this IIdentity identity)
         {

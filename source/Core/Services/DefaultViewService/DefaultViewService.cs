@@ -254,7 +254,7 @@ namespace IdentityServer3.Core.Services.Default
         /// <param name="stylesheets">The stylesheets.</param>
         /// <param name="scripts">The scripts.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// model
         /// or
         /// stylesheets

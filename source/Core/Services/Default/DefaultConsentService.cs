@@ -38,7 +38,7 @@ namespace IdentityServer3.Core.Services.Default
         /// Initializes a new instance of the <see cref="DefaultConsentService"/> class.
         /// </summary>
         /// <param name="store">The consent store.</param>
-        /// <exception cref="System.ArgumentNullException">store</exception>
+        /// <exception cref="ArgumentNullException">store</exception>
         public DefaultConsentService(IConsentStore store)
         {
             if (store == null) throw new ArgumentNullException("store");

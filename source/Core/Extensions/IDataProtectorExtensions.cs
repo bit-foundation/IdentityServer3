@@ -21,7 +21,7 @@ using System.Text;
 namespace IdentityServer3.Core.Extensions
 {
     /// <summary>
-    /// Extension methods for <see cref="IdentityServer3.Core.Configuration.IDataProtector"/>
+    /// Extension methods for <see cref="IDataProtector"/>
     /// </summary>
     public static class IDataProtectorExtensions
     {

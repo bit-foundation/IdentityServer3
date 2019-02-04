@@ -90,7 +90,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The env.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// message
@@ -101,14 +101,14 @@ namespace IdentityServer3.Core.Extensions
 
             return env.CreateSignInRequest(new SignInMessage());
         }
-        
+
         /// <summary>
         /// Creates and writes the signin cookie to the response and returns the associated URL to the login page.
         /// </summary>
         /// <param name="env">The OWIN environment.</param>
         /// <param name="message">The signin message.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// message
@@ -148,7 +148,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The OWIN environment.</param>
         /// <param name="login">The login information.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// login
@@ -212,7 +212,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The env.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">env</exception>
+        /// <exception cref="ArgumentNullException">env</exception>
         public static string CreateSignOutRequest(this IDictionary<string, object> env)
         {
             if (env == null) throw new ArgumentNullException("env");
@@ -226,7 +226,7 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="env">The env.</param>
         /// <param name="message">The message.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">message</exception>
+        /// <exception cref="ArgumentNullException">message</exception>
         public static string CreateSignOutRequest(this IDictionary<string, object> env, SignOutMessage message)
         {
             if (message == null) throw new ArgumentNullException("message");
@@ -262,12 +262,12 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="env">The env.</param>
         /// <param name="claims">The claims.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// claims
         /// </exception>
-        /// <exception cref="System.Exception">No partial login</exception>
+        /// <exception cref="Exception">No partial login</exception>
         public static async Task UpdatePartialLoginClaimsAsync(this IDictionary<string, object> env, IEnumerable<Claim> claims)
         {
             if (env == null) throw new ArgumentNullException("env");
@@ -334,7 +334,7 @@ namespace IdentityServer3.Core.Extensions
         {
             if (env == null) throw new ArgumentNullException("env");
 
-            var authResult = new IdentityServer3.Core.Models.AuthenticateResult(subject, name, claims, identityProvider, authenticationMethod);
+            var authResult = new Models.AuthenticateResult(subject, name, claims, identityProvider, authenticationMethod);
             await env.UpdatePartialLoginClaimsAsync(authResult.User.Claims);
         }
 
@@ -343,8 +343,8 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The env.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">env</exception>
-        /// <exception cref="System.Exception">No partial login</exception>
+        /// <exception cref="ArgumentNullException">env</exception>
+        /// <exception cref="Exception">No partial login</exception>
         public static async Task<string> GetPartialLoginRestartUrlAsync(this IDictionary<string, object> env)
         {
             if (env == null) throw new ArgumentNullException("env");
@@ -366,8 +366,8 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The env.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">env</exception>
-        /// <exception cref="System.Exception">No partial login</exception>
+        /// <exception cref="ArgumentNullException">env</exception>
+        /// <exception cref="Exception">No partial login</exception>
         public static async Task<string> GetPartialLoginResumeUrlAsync(this IDictionary<string, object> env)
         {
             if (env == null) throw new ArgumentNullException("env");
@@ -389,8 +389,8 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The env.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">env</exception>
-        /// <exception cref="System.Exception">No partial login</exception>
+        /// <exception cref="ArgumentNullException">env</exception>
+        /// <exception cref="Exception">No partial login</exception>
         public static async Task<bool?> GetPartialLoginRememberMeAsync(this IDictionary<string, object> env)
         {
             if (env == null) throw new ArgumentNullException("env");
@@ -405,7 +405,7 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="env">The OWIN environment.</param>
         /// <param name="id">The signin identifier.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// id
@@ -426,7 +426,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The OWIN environment.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// id
@@ -448,7 +448,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The OWIN environment.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// id
@@ -467,7 +467,7 @@ namespace IdentityServer3.Core.Extensions
         /// <param name="env">The OWIN environment.</param>
         /// <param name="id">The sign out message id.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// id
@@ -488,7 +488,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The OWIN environment.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// env
         /// or
         /// id
@@ -504,7 +504,7 @@ namespace IdentityServer3.Core.Extensions
         /// </summary>
         /// <param name="env">The OWIN environment.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">env</exception>
+        /// <exception cref="ArgumentNullException">env</exception>
         public static async Task<ClaimsIdentity> GetIdentityServerFullLoginAsync(this IDictionary<string, object> env)
         {
             if (env == null) throw new ArgumentNullException("env");
@@ -512,13 +512,13 @@ namespace IdentityServer3.Core.Extensions
             var context = new OwinContext(env);
             return await context.GetIdentityFrom(Constants.PrimaryAuthenticationType);
         }
-        
+
         /// <summary>
         /// Gets the current partial logged in IdentityServer user. Returns null if the user is not logged in.
         /// </summary>
         /// <param name="env">The OWIN environment.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">env</exception>
+        /// <exception cref="ArgumentNullException">env</exception>
         public static async Task<ClaimsIdentity> GetIdentityServerPartialLoginAsync(this IDictionary<string, object> env)
         {
             if (env == null) throw new ArgumentNullException("env");
@@ -531,7 +531,7 @@ namespace IdentityServer3.Core.Extensions
         /// Removes the partial login cookie.
         /// </summary>
         /// <param name="env">The env.</param>
-        /// <exception cref="System.ArgumentNullException">env</exception>
+        /// <exception cref="ArgumentNullException">env</exception>
         public static void RemovePartialLoginCookie(this IDictionary<string, object> env)
         {
             if (env == null) throw new ArgumentNullException("env");

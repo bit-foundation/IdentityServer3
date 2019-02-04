@@ -229,7 +229,7 @@ namespace IdentityServer3.Core.Services.Default
         /// <returns>
         /// A security token in serialized form
         /// </returns>
-        /// <exception cref="System.InvalidOperationException">Invalid token type.</exception>
+        /// <exception cref="InvalidOperationException">Invalid token type.</exception>
         public virtual async Task<string> CreateSecurityTokenAsync(Token token)
         {
             string tokenResult;

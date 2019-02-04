@@ -40,7 +40,7 @@ namespace IdentityServer3.Core.Services.Default
         /// <param name="clientStore">The client store.</param>
         /// <param name="scopeStore">The scope store.</param>
         /// <param name="localizationService">The localization service.</param>
-        /// <exception cref="System.ArgumentNullException">permissionsStore
+        /// <exception cref="ArgumentNullException">permissionsStore
         /// or
         /// clientStore
         /// or
@@ -69,7 +69,7 @@ namespace IdentityServer3.Core.Services.Default
         /// <returns>
         /// A list of client permissions
         /// </returns>
-        /// <exception cref="System.ArgumentNullException">subject</exception>
+        /// <exception cref="ArgumentNullException">subject</exception>
         public virtual async Task<IEnumerable<ClientPermission>> GetClientPermissionsAsync(string subject)
         {
             if (String.IsNullOrWhiteSpace(subject))
@@ -127,7 +127,7 @@ namespace IdentityServer3.Core.Services.Default
         /// <param name="subject">The subject identifier.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// subject
         /// or
         /// clientId

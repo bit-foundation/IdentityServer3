@@ -26,7 +26,7 @@ using System.Security.Claims;
 namespace IdentityServer3.Core.Configuration
 {
     /// <summary>
-    /// Extension methods for <see cref="IdentityServer3.Core.Configuration.IdentityServerServiceFactory"/>
+    /// Extension methods for <see cref="IdentityServerServiceFactory"/>
     /// </summary>
     public static class IdentityServerServiceFactoryExtensions
     {
@@ -38,7 +38,7 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="factory">The factory.</param>
         /// <param name="cacheRegistration">The cache registration.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// factory
         /// or
         /// cacheRegistration
@@ -91,7 +91,7 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="factory">The factory.</param>
         /// <param name="cacheRegistration">The cache registration.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// factory
         /// or
         /// cacheRegistration
@@ -144,7 +144,7 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="factory">The factory.</param>
         /// <param name="cacheRegistration">The cache registration.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// factory
         /// or
         /// cacheRegistration
@@ -197,12 +197,12 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="factory">The factory.</param>
         /// <param name="options">The default view service options.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// factory
         /// or
         /// options
         /// </exception>
-        /// <exception cref="System.InvalidOperationException">ViewService is already configured</exception>
+        /// <exception cref="InvalidOperationException">ViewService is already configured</exception>
         public static void ConfigureDefaultViewService(this IdentityServerServiceFactory factory, 
             DefaultViewServiceOptions options)
         {
@@ -219,12 +219,12 @@ namespace IdentityServer3.Core.Configuration
         /// </summary>
         /// <param name="factory">The factory.</param>
         /// <param name="options">The default view service options.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// factory
         /// or
         /// options
         /// </exception>
-        /// <exception cref="System.InvalidOperationException">ViewService is already configured</exception>
+        /// <exception cref="InvalidOperationException">ViewService is already configured</exception>
         public static void ConfigureDefaultViewService<T>(this IdentityServerServiceFactory factory,
             DefaultViewServiceOptions options)
             where T : DefaultViewService

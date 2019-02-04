@@ -141,7 +141,7 @@ namespace IdentityServer3.Core.Services.InMemory
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">subject</exception>
+        /// <exception cref="ArgumentNullException">subject</exception>
         public override Task IsActiveAsync(IsActiveContext context)
         {
             if (context.Subject == null) throw new ArgumentNullException("subject");

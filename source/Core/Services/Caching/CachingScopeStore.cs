@@ -39,7 +39,7 @@ namespace IdentityServer3.Core.Services.Caching
         /// </summary>
         /// <param name="inner">The inner <see cref="IScopeStore"/>.</param>
         /// <param name="cache">The cache.</param>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// inner
         /// or
         /// cache
