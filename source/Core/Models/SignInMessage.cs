@@ -97,7 +97,7 @@ namespace IdentityServer3.Core.Models
         /// </summary>
         public SignInMessage()
         {
-            AcrValues = Enumerable.Empty<string>();
+            AcrValues = new string[] { }; // https://github.com/JamesNK/Newtonsoft.Json/issues/2034
         }
     }
 }
