@@ -24,6 +24,7 @@ using IdentityServer3.Core.Services;
 using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Logging;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 
 namespace Owin
@@ -52,6 +53,9 @@ namespace Owin
             if (options == null) throw new ArgumentNullException("options");
 
             options.Validate();
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.Clear();
 
             if (options.RequireSsl)
             {

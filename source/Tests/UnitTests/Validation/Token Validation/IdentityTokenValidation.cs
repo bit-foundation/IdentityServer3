@@ -16,6 +16,7 @@
 
 using FluentAssertions;
 using IdentityServer3.Core;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -25,6 +26,11 @@ namespace IdentityServer3.Tests.Validation.Tokens
     public class IdentityTokenValidation
     {
         const string Category = "Identity token validation";
+
+        static IdentityTokenValidation()
+        {
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+        }
 
         [Fact]
         [Trait("Category", Category)]
